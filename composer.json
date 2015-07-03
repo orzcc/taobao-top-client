@@ -1,0 +1,24 @@
+ {
+    "name": "orzcc/taobao-top-client",
+    "type": "library",
+    "description": "Taobao top client(SDK) for laravel 5.1",
+    "keywords": ["taobao", "laravel", "sdk", "api"],
+    "homepage": "https://github.com/orzcc/taobao-top-client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "orzcc",
+            "email": "orzcczh@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=5.4.0",
+      "illuminate/support": ">=5.0"
+    },
+    "autoload": {
+      "psr-4": {
+        "Orzcc\\TopClient\\": "src/",
+        "TopClient\\": "src/top/"
+      }
+    }
+}
