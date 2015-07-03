@@ -9,8 +9,13 @@
  */
 return [
 
-    'app_key'       => 'APP KEY',
-    'app_secret'    => 'APP SECRET',
-    'format'        => 'json'
+ 	'default' => 'app',
 
+	'connections' => [
+        'app' => [
+            'app_key'       => 'APP KEY',
+    		'app_secret'    => 'APP SECRET',
+    		'format'        => 'json'
+        ]
+    ]
 ];
