@@ -8,7 +8,7 @@ use TopClient\RequestCheckUtil;
  * TOP API: alibaba.geoip.get request
  * 
  * @author auto create
- * @since 1.0, 2015.06.16
+ * @since 1.0, 2015.08.20
  */
 class AlibabaGeoipGetRequest
 {

@@ -5,34 +5,34 @@ namespace TopClient\request;
 use TopClient\RequestCheckUtil;
 
 /**
- * TOP API: taobao.user.buyer.get request
+ * TOP API: taobao.topats.result.get request
  * 
  * @author auto create
- * @since 1.0, 2015.05.11
+ * @since 1.0, 2014.04.11
  */
-class UserBuyerGetRequest
+class TopatsResultGetRequest
 {
 	/** 
-	 * 只返回nick, avatar参数
+	 * 任务id号，创建任务时返回的task_id
 	 **/
-	private $fields;
+	private $taskId;
 	
 	private $apiParas = array();
 	
-	public function setFields($fields)
+	public function setTaskId($taskId)
 	{
-		$this->fields = $fields;
-		$this->apiParas["fields"] = $fields;
+		$this->taskId = $taskId;
+		$this->apiParas["task_id"] = $taskId;
 	}
 
-	public function getFields()
+	public function getTaskId()
 	{
-		return $this->fields;
+		return $this->taskId;
 	}
 
 	public function getApiMethodName()
 	{
-		return "taobao.user.buyer.get";
+		return "taobao.topats.result.get";
 	}
 	
 	public function getApiParas()
@@ -43,7 +43,7 @@ class UserBuyerGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->fields,"fields");
+		RequestCheckUtil::checkNotNull($this->taskId,"taskId");
 	}
 	
 	public function putOtherTextParam($key, $value) {

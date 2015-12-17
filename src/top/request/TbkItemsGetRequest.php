@@ -8,7 +8,7 @@ use TopClient\RequestCheckUtil;
  * TOP API: taobao.tbk.items.get request
  * 
  * @author auto create
- * @since 1.0, 2015.06.16
+ * @since 1.0, 2013.11.08
  */
 class TbkItemsGetRequest
 {

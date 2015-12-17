@@ -5,28 +5,27 @@ namespace TopClient\request;
 use TopClient\RequestCheckUtil;
 
 /**
- * TOP API: taobao.tbk.items.detail.get request
+ * TOP API: taobao.tbk.item.info.get request
  * 
  * @author auto create
- * @since 1.0, 2014.10.14
+ * @since 1.0, 2015.11.23
  */
-class TbkItemsDetailGetRequest
+class TbkItemInfoGetRequest
 {
 	/** 
-	 * 需返回的字段列表.可选值:num_iid,seller_id,nick,title,price,volume,pic_url,item_url,shop_url
-;字段之间用","分隔.
+	 * 需返回的字段列表
 	 **/
 	private $fields;
 	
 	/** 
-	 * 淘宝客商品数字id串.最大输入40个.格式如:"value1,value2,value3" 用" , "号分隔商品数字id
+	 * 商品ID串，用,分割，从taobao.tbk.item.get接口获取num_iid字段，最大40个
 	 **/
 	private $numIids;
 	
 	/** 
-	 * 商品track_iid串（带有追踪效果的商品id),最大输入40个,与num_iids必填其一
+	 * 链接形式：1：PC，2：无线，默认：１
 	 **/
-	private $trackIids;
+	private $platform;
 	
 	private $apiParas = array();
 	
@@ -52,20 +51,20 @@ class TbkItemsDetailGetRequest
 		return $this->numIids;
 	}
 
-	public function setTrackIids($trackIids)
+	public function setPlatform($platform)
 	{
-		$this->trackIids = $trackIids;
-		$this->apiParas["track_iids"] = $trackIids;
+		$this->platform = $platform;
+		$this->apiParas["platform"] = $platform;
 	}
 
-	public function getTrackIids()
+	public function getPlatform()
 	{
-		return $this->trackIids;
+		return $this->platform;
 	}
 
 	public function getApiMethodName()
 	{
-		return "taobao.tbk.items.detail.get";
+		return "taobao.tbk.item.info.get";
 	}
 	
 	public function getApiParas()
@@ -77,8 +76,7 @@ class TbkItemsDetailGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
-		RequestCheckUtil::checkMaxListSize($this->numIids,50,"numIids");
-		RequestCheckUtil::checkMaxListSize($this->trackIids,50,"trackIids");
+		RequestCheckUtil::checkNotNull($this->numIids,"numIids");
 	}
 	
 	public function putOtherTextParam($key, $value) {

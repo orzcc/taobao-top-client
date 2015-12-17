@@ -5,15 +5,15 @@ namespace TopClient\request;
 use TopClient\RequestCheckUtil;
 
 /**
- * TOP API: taobao.user.buyer.get request
+ * TOP API: taobao.areas.get request
  * 
  * @author auto create
- * @since 1.0, 2015.05.11
+ * @since 1.0, 2015.09.17
  */
-class UserBuyerGetRequest
+class AreasGetRequest
 {
 	/** 
-	 * 只返回nick, avatar参数
+	 * 需返回的字段列表.可选值:Area 结构中的所有字段;多个字段之间用","分隔.如:id,type,name,parent_id,zip.
 	 **/
 	private $fields;
 	
@@ -32,7 +32,7 @@ class UserBuyerGetRequest
 
 	public function getApiMethodName()
 	{
-		return "taobao.user.buyer.get";
+		return "taobao.areas.get";
 	}
 	
 	public function getApiParas()

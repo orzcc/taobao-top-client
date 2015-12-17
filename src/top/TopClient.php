@@ -2,7 +2,6 @@
 
 namespace TopClient;
 
-use TopClient\ResultSet;
 use TopClient\domain\Utilities\AssertUtils;
 
 class TopClient
@@ -26,7 +25,7 @@ class TopClient
 
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "top-sdk-php-20150308";
+	protected $sdkVersion = "top-sdk-php-20151012";
 
 	protected function generateSign($params)
 	{
@@ -110,7 +109,7 @@ class TopClient
 		return $reponse;
 	}
 
-	public function execute($request, $session = null)
+	public function execute($request, $session = null, $bestUrl = null)
 	{
 		$result =  new ResultSet(); 
 		if($this->checkRequest) {
@@ -130,7 +129,6 @@ class TopClient
 		$sysParams["sign_method"] = $this->signMethod;
 		$sysParams["method"] = $request->getApiMethodName();
 		$sysParams["timestamp"] = date("Y-m-d H:i:s");
-		$sysParams["partner_id"] = $this->sdkVersion;
 		if (null != $session)
 		{
 			$sysParams["session"] = $session;
@@ -139,11 +137,19 @@ class TopClient
 		//获取业务参数
 		$apiParams = $request->getApiParas();
 
+		//系统参数放入GET请求串
+		if($bestUrl){
+			$requestUrl = $bestUrl."?";
+			$sysParams["partner_id"] = $this->getClusterTag();
+		} else {
+			$requestUrl = $this->gatewayUrl."?";
+			$sysParams["partner_id"] = $this->sdkVersion;
+		}
+
 		//签名
 		$sysParams["sign"] = $this->generateSign(array_merge($apiParams, $sysParams));
 
 		//系统参数放入GET请求串
-		$requestUrl = $this->gatewayUrl . "?";
 		foreach ($sysParams as $sysParamKey => $sysParamValue)
 		{
 			$requestUrl .= "$sysParamKey=" . urlencode($sysParamValue) . "&";
@@ -230,5 +236,10 @@ class TopClient
 			}
 		}
 		return $this->execute($req, $session);
+	}
+
+	private function getClusterTag()
+	{
+		return substr($this->sdkVersion,0,11)."-cluster".substr($this->sdkVersion,11);
 	}
 }

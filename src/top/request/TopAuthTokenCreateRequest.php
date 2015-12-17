@@ -5,34 +5,34 @@ namespace TopClient\request;
 use TopClient\RequestCheckUtil;
 
 /**
- * TOP API: taobao.user.buyer.get request
+ * TOP API: taobao.top.auth.token.create request
  * 
  * @author auto create
- * @since 1.0, 2015.05.11
+ * @since 1.0, 2015.08.20
  */
-class UserBuyerGetRequest
+class TopAuthTokenCreateRequest
 {
 	/** 
-	 * 只返回nick, avatar参数
+	 * 授权code，grantType==authorization_code 时需要
 	 **/
-	private $fields;
+	private $code;
 	
 	private $apiParas = array();
 	
-	public function setFields($fields)
+	public function setCode($code)
 	{
-		$this->fields = $fields;
-		$this->apiParas["fields"] = $fields;
+		$this->code = $code;
+		$this->apiParas["code"] = $code;
 	}
 
-	public function getFields()
+	public function getCode()
 	{
-		return $this->fields;
+		return $this->code;
 	}
 
 	public function getApiMethodName()
 	{
-		return "taobao.user.buyer.get";
+		return "taobao.top.auth.token.create";
 	}
 	
 	public function getApiParas()
@@ -43,7 +43,7 @@ class UserBuyerGetRequest
 	public function check()
 	{
 		
-		RequestCheckUtil::checkNotNull($this->fields,"fields");
+		RequestCheckUtil::checkNotNull($this->code,"code");
 	}
 	
 	public function putOtherTextParam($key, $value) {
