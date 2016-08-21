@@ -1,7 +1,8 @@
 <?php
 namespace Orzcc\TopClient;
 
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\Application as LaravelApplication;
+use Laravel\Lumen\Application as LumenApplication;
 use Illuminate\Support\ServiceProvider;
 
 class TopClientServiceProvider extends ServiceProvider {
@@ -22,7 +23,11 @@ class TopClientServiceProvider extends ServiceProvider {
     protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/taobaotop.php');
-        $this->publishes([$source => config_path('taobaotop.php')]);
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$source => config_path('taobaotop.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('taobaotop');
+        }
         $this->mergeConfigFrom($source, 'taobaotop');
     }
     /**
@@ -38,11 +43,11 @@ class TopClientServiceProvider extends ServiceProvider {
     /**
      * Register the factory class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @param \Illuminate\Contracts\Foundation\Application | Laravel\Lumen\Application $app
      *
      * @return void
      */
-    protected function registerFactory(Application $app)
+    protected function registerFactory($app)
     {
         $app->singleton('topclient.factory', function ($app) {
             return new Factories\TopClientFactory();
@@ -56,7 +61,7 @@ class TopClientServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    protected function registerManager(Application $app)
+    protected function registerManager($app)
     {
         $app->singleton('topclient', function ($app) {
             $config = $app['config'];

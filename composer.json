@@ -1,4 +1,4 @@
- {
+{
     "name": "orzcc/taobao-top-client",
     "type": "library",
     "description": "Taobao top client(SDK) for laravel 5.1",
@@ -12,13 +12,14 @@
         }
     ],
     "require": {
-      "php": ">=5.4.0",
-      "illuminate/support": "~5.0|~5.1|~5.2"
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0|~5.1|~5.2",
+        "graham-campbell/manager": "^2.0"
     },
     "autoload": {
-      "psr-4": {
-        "Orzcc\\TopClient\\": "src/",
-        "TopClient\\": "src/top/"
-      }
+        "psr-4": {
+            "Orzcc\\TopClient\\": "src/",
+            "TopClient\\": "src/top/"
+        }
     }
 }
