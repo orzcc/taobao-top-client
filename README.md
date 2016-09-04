@@ -6,7 +6,10 @@
 ### 安装
 `composer require orzcc/taobao-top-client`
 ### 配置
-`php artisan vendor:publish --provider="Orzcc\TopClient\TopClientServiceProvider"`
+* 在config/app.php中的providers数组中添加`Orzcc\TopClient\TopClientServiceProvider::class,`
+* 在config/app.php中的aliases数组中添加`'TopClient' => Orzcc\TopClient\Facades\TopClient::class,`
+* 执行 `php artisan vendor:publish --provider="Orzcc\TopClient\TopClientServiceProvider"` 生成配置文件
+* 编辑.env文件，设置appid,appsecret
 ### 示例代码
 ```php
 use TopClient;
@@ -26,6 +29,7 @@ dd($resp);
 ## lumen
 ### 安装
 `composer require orzcc/taobao-top-client`
+
 ### 配置
 * 手动复制vendor/orzcc/taobao-top-client/config/taobaotop.php到config目录下
 * 在bootstrap/app.php下添加
@@ -35,6 +39,8 @@ if (!class_exists('TopClient')) {
 }
 $app->register(Orzcc\TopClient\TopClientServiceProvider::class);
 ```
+* 编辑.env文件，设置appid,appsecret
+
 ### 示例代码
 ```php
 use TopClient;
