@@ -1,13 +1,13 @@
-# 淘宝API for laravel 5.1
+# 淘宝API for laravel/lumen (5.1|5.2)
 
 当前淘宝客 API 升级为2.0，原「淘宝客初级包」合并到了「淘宝客基础API」。
 
 ## laravel
-1. 安装
+### 安装
 `composer require orzcc/taobao-top-client`
-2. 配置
+### 配置
 `php artisan vendor:publish --provider="Orzcc\TopClient\TopClientServiceProvider"`
-3. 示例代码
+### 示例代码
 ```php
 use TopClient;
 use TopClient\request\TbkItemGetRequest;
@@ -24,9 +24,9 @@ dd($resp);
 ```
 
 ## lumen
-1. 安装
+### 安装
 `composer require orzcc/taobao-top-client`
-2. 配置
+### 配置
 * 手动复制vendor/orzcc/taobao-top-client/config/taobaotop.php到config目录下
 * 在bootstrap/app.php下添加
 ```php
@@ -35,7 +35,7 @@ if (!class_exists('TopClient')) {
 }
 $app->register(Orzcc\TopClient\TopClientServiceProvider::class);
 ```
-3. 示例代码
+### 示例代码
 ```php
 use TopClient;
 use TopClient\request\TbkItemGetRequest;
