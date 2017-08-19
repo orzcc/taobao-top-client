@@ -8,15 +8,10 @@ use TopClient\RequestCheckUtil;
  * TOP API: taobao.tbk.item.recommend.get request
  *
  * @author auto create
- * @since 1.0, 2016.01.05
+ * @since 1.0, 2016.07.11
  */
 class TbkItemRecommendGetRequest
 {
-	/**
-	 * 后台类目Id，仅支持叶子类目Id，即通过taobao.itemcats.get获取到is_parent=false的cid
-	 **/
-	private $cat;
-
 	/**
 	 * 返回数量，默认20，最大值40
 	 **/
@@ -37,28 +32,7 @@ class TbkItemRecommendGetRequest
 	 **/
 	private $platform;
 
-	/**
-	 * 推荐类型，1:同类商品推荐，2:异类商品推荐，3:同店商品推荐，此时必须输入num_iid;4:店铺热门推荐，此时必须输入user_id，这里的user_id得通过taobao.tbk.shop.get这个接口去获取user_id字段;5:类目热门推荐，此时必须输入cid
-	 **/
-	private $relateType;
-
-	/**
-	 * 卖家Id
-	 **/
-	private $userId;
-
 	private $apiParas = array();
-
-	public function setCat($cat)
-	{
-		$this->cat = $cat;
-		$this->apiParas["cat"] = $cat;
-	}
-
-	public function getCat()
-	{
-		return $this->cat;
-	}
 
 	public function setCount($count)
 	{
@@ -104,28 +78,6 @@ class TbkItemRecommendGetRequest
 		return $this->platform;
 	}
 
-	public function setRelateType($relateType)
-	{
-		$this->relateType = $relateType;
-		$this->apiParas["relate_type"] = $relateType;
-	}
-
-	public function getRelateType()
-	{
-		return $this->relateType;
-	}
-
-	public function setUserId($userId)
-	{
-		$this->userId = $userId;
-		$this->apiParas["user_id"] = $userId;
-	}
-
-	public function getUserId()
-	{
-		return $this->userId;
-	}
-
 	public function getApiMethodName()
 	{
 		return "taobao.tbk.item.recommend.get";
@@ -140,6 +92,7 @@ class TbkItemRecommendGetRequest
 	{
 
 		RequestCheckUtil::checkNotNull($this->fields,"fields");
+		RequestCheckUtil::checkNotNull($this->numIid,"numIid");
 	}
 
 	public function putOtherTextParam($key, $value) {
