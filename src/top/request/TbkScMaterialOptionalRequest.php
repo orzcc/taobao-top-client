@@ -4,7 +4,7 @@ namespace TopClient\request;
  * TOP API: taobao.tbk.sc.material.optional request
  * 
  * @author auto create
- * @since 1.0, 2018.03.20
+ * @since 1.0, 2018.04.02
  */
 use TopClient\RequestCheckUtil;
 class TbkScMaterialOptionalRequest
@@ -28,6 +28,11 @@ class TbkScMaterialOptionalRequest
 	 * 淘客佣金比率上限，如：1234表示12.34%
 	 **/
 	private $endTkRate;
+	
+	/** 
+	 * 是否有优惠券，设置为true表示该商品有优惠券，设置为false或不设置表示不判断这个属性
+	 **/
+	private $hasCoupon;
 	
 	/** 
 	 * 是否海外商品，设置为true表示该商品是属于海外商品，设置为false或不设置表示不判断这个属性
@@ -133,6 +138,17 @@ class TbkScMaterialOptionalRequest
 	public function getEndTkRate()
 	{
 		return $this->endTkRate;
+	}
+
+	public function setHasCoupon($hasCoupon)
+	{
+		$this->hasCoupon = $hasCoupon;
+		$this->apiParas["has_coupon"] = $hasCoupon;
+	}
+
+	public function getHasCoupon()
+	{
+		return $this->hasCoupon;
 	}
 
 	public function setIsOverseas($isOverseas)
