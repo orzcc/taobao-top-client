@@ -1,7 +1,7 @@
 {
     "name": "orzcc/taobao-top-client",
     "type": "library",
-    "description": "Taobao top client(SDK) for laravel 5.1",
+    "description": "Taobao top client(SDK) for laravel",
     "keywords": ["taobao", "laravel", "sdk", "api"],
     "homepage": "https://github.com/orzcc/taobao-top-client",
     "license": "MIT",
@@ -13,8 +13,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "~5.0|~5.1|~5.2|~5.3|~5.4",
-        "graham-campbell/manager": "^2.0|^3.0"
+        "illuminate/support": "~5.1",
+        "graham-campbell/manager": "~2.1"
     },
     "autoload": {
         "psr-4": {
