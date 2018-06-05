@@ -2,30 +2,41 @@
 namespace TopClient\request;
 /**
  * TOP API: taobao.tbk.dg.newuser.order.get request
- * 
+ *
  * @author auto create
  * @since 1.0, 2018.02.03
  */
 use TopClient\RequestCheckUtil;
 class TbkDgNewuserOrderGetRequest
 {
-	/** 
+	/**
 	 * mm_xxx_xxx_xxx的第三位
 	 **/
 	private $adzoneId;
-	
-	/** 
+
+	/**
 	 * 页码，默认1
 	 **/
 	private $pageNo;
-	
-	/** 
+
+	/**
 	 * 页大小，默认20，1~100
 	 **/
 	private $pageSize;
-	
+
 	private $apiParas = array();
-	
+
+	public function setActivityId($activityId)
+    {
+        $this->activityId = $activityId;
+        $this->apiParas["activity_id"] = $activityId;
+    }
+
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
+
 	public function setAdzoneId($adzoneId)
 	{
 		$this->adzoneId = $adzoneId;
@@ -63,19 +74,19 @@ class TbkDgNewuserOrderGetRequest
 	{
 		return "taobao.tbk.dg.newuser.order.get";
 	}
-	
+
 	public function getApiParas()
 	{
 		return $this->apiParas;
 	}
-	
+
 	public function check()
 	{
-		
+
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 	}
-	
+
 	public function putOtherTextParam($key, $value) {
 		$this->apiParas[$key] = $value;
 		$this->$key = $value;
