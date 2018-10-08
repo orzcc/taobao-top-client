@@ -93,6 +93,75 @@ class TbkScMaterialOptionalRequest
 	 * 淘客佣金比率下限，如：1234表示12.34%
 	 **/
 	private $startTkRate;
+
+    //add
+    /**
+     * 官方物料id
+     **/
+    private $materialId;
+
+    /**
+     * ip    ip参数影响邮费获取，如果不传或者传入不准确，邮费无法精准提供
+     */
+    private $ip;
+
+    /**
+     * 退款率是否低于行业均值
+     */
+    private $includeRfdRate;
+
+    /**
+     *好评率是否高于行业均值
+     */
+    private $includeGoodRate;
+
+    /**
+     *成交转化是否高于行业均值
+     */
+    private $includePayRate30;
+
+    /**
+     *是否加入消费者保障，true表示加入，空或false表示不限
+     */
+    private $needRrepay;
+
+    /**
+     *是否包邮，true表示包邮，空或false表示不限
+     */
+    private $needFreeShipment;
+
+    /**
+     *牛皮癣程度，取值：1:不限，2:无，3:轻微
+     */
+    private $npxLevel;
+
+    /**
+     *KA媒体淘客佣金比率上限，如：1234表示12.34%
+     */
+    private $endKaTkRate;
+
+    /**
+     *KA媒体淘客佣金比率下限，如：1234表示12.34%
+     */
+    private $startKaTkRate;
+
+    /**
+     *设备号加密后的值
+     */
+    private $deviceValue;
+
+    /**
+     *设备号加密类型：MD5
+     */
+    private $deviceEncrypt;
+
+    /**
+     *设备号类型：IMEI，或者IDFA，或者UTDID
+     */
+    private $deviceType;
+
+
+    //end
 	
 	private $apiParas = array();
 	
@@ -282,6 +351,152 @@ class TbkScMaterialOptionalRequest
 	{
 		return $this->startTkRate;
 	}
+
+	//add
+    public function setMaterialId($materialId)
+    {
+        $this->materialId = $materialId;
+        $this->apiParas["material_id"] = $materialId;
+    }
+
+    public function getMaterialId()
+    {
+        return $this->materialId;
+    }
+
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+        $this->apiParas["ip"] = $ip;
+    }
+
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    public function setIncludeRfdRate($includeRfdRate)
+    {
+        $this->includeRfdRate = $includeRfdRate;
+        $this->apiParas["include_rfd_rate"] = $includeRfdRate;
+    }
+
+    public function getIncludeRfdRate()
+    {
+        return $this->includeRfdRate;
+    }
+
+    public function setIncludeGoodRate($includeGoodRate)
+    {
+        $this->includeGoodRate = $includeGoodRate;
+        $this->apiParas["include_good_rate"] = $includeGoodRate;
+    }
+
+    public function getRncludeGoodRate()
+    {
+        return $this->includeGoodRate;
+    }
+
+    public function setIncludePayRate30($includePayRate30)
+    {
+        $this->includePayRate30 = $includePayRate30;
+        $this->apiParas["include_pay_rate_30"] = $includePayRate30;
+    }
+
+    public function getIncludePayRate30()
+    {
+        return $this->includePayRate30;
+    }
+
+    public function setNeedPrepay($needRrepay)
+    {
+        $this->needRrepay = $needRrepay;
+        $this->apiParas["need_prepay"] = $needRrepay;
+    }
+
+    public function getNeedPrepay()
+    {
+        return $this->needRrepay;
+    }
+
+    public function setNeedFreeShipment($needFreeShipment)
+    {
+        $this->needFreeShipment = $needFreeShipment;
+        $this->apiParas["need_free_shipment"] = $needFreeShipment;
+    }
+
+    public function getNeedFreeShipment()
+    {
+        return $this->needFreeShipment;
+    }
+
+    public function setNpxLevel($npxLevel)
+    {
+        $this->npxLevel = $npxLevel;
+        $this->apiParas["npx_level"] = $npxLevel;
+    }
+
+    public function getNpxLevel()
+    {
+        return $this->npxLevel;
+    }
+
+    public function setEndKaTkRate($endKaTkRate)
+    {
+        $this->endKaTkRate = $endKaTkRate;
+        $this->apiParas["end_ka_tk_rate"] = $endKaTkRate;
+    }
+
+    public function getEndKaTkRate()
+    {
+        return $this->endKaTkRate;
+    }
+
+    public function setStartKaTkRate($startKaTkRate)
+    {
+        $this->startKaTkRate = $startKaTkRate;
+        $this->apiParas["start_ka_tk_rate"] = $startKaTkRate;
+    }
+
+    public function getStartKaTkRate()
+    {
+        return $this->startKaTkRate;
+    }
+
+    public function setDeviceValue($deviceValue)
+    {
+        $this->deviceValue = $deviceValue;
+        $this->apiParas["device_value"] = $deviceValue;
+    }
+
+    public function getDeviceValue()
+    {
+        return $this->deviceValue;
+    }
+
+    public function setDeviceEncrypt($deviceEncrypt)
+    {
+        $this->deviceEncrypt = $deviceEncrypt;
+        $this->apiParas["device_encrypt"] = $deviceEncrypt;
+    }
+
+    public function getDeviceEncrypt()
+    {
+        return $this->deviceEncrypt;
+    }
+
+    public function setDeviceType($deviceType)
+    {
+        $this->deviceType = $deviceType;
+        $this->apiParas["device_type"] = $deviceType;
+    }
+
+    public function getDeviceType()
+    {
+        return $this->deviceType;
+    }
+    //end
+
 
 	public function getApiMethodName()
 	{
