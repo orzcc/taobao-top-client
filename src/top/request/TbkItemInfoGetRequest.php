@@ -12,6 +12,9 @@ use TopClient\RequestCheckUtil;
  */
 class TbkItemInfoGetRequest
 {
+	// 废弃
+	private $fields;
+
 	/**
 	 * ip地址，影响邮费获取，如果不传或者传入不准确，邮费无法精准提供
 	 **/
@@ -28,6 +31,19 @@ class TbkItemInfoGetRequest
 	private $platform;
 
 	private $apiParas = array();
+
+	// 废弃 start
+	public function setFields($fields)
+ 	{
+		$this->fields = $fields;
+		$this->apiParas["fields"] = $fields;
+	}
+
+	public function getFields()
+ 	{
+		return $this->fields;
+	}
+	// 废弃 end
 
 	public function setIp($ip)
 	{
