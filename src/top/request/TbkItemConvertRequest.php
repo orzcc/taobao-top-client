@@ -8,7 +8,7 @@ use TopClient\RequestCheckUtil;
  * TOP API: taobao.tbk.item.convert request
  *
  * @author auto create
- * @since 1.0, 2016.07.25
+ * @since 1.0, 2018.07.25
  */
 class TbkItemConvertRequest
 {
@@ -16,6 +16,11 @@ class TbkItemConvertRequest
 	 * 广告位ID，区分效果位置
 	 **/
 	private $adzoneId;
+
+	/**
+	 * 1表示商品转通用计划链接，其他值或不传表示转营销计划链接
+	 **/
+	private $dx;
 
 	/**
 	 * 需返回的字段列表
