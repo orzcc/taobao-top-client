@@ -23,7 +23,7 @@ class TopClient
 
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "top-sdk-php-20151012";
+	protected $sdkVersion = "top-sdk-php-20180326";
 
 	public function __construct($appkey = "",$secretKey = ""){
 		$this->appkey = $appkey;
