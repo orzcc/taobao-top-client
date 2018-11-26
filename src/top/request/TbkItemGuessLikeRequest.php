@@ -1,4 +1,5 @@
 <?php
+namespace TopClient\request;
 /**
  * TOP API: taobao.tbk.item.guess.like request
  * 
