@@ -12,6 +12,11 @@ use TopClient\RequestCheckUtil;
 class TbkActivitylinkGetRequest
 {
 	/**
+	 * 官方活动ID，从官方活动页获取
+	 **/
+	private $activityId;
+
+	/**
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第三段
 	 **/
 	private $adzoneId;
@@ -27,11 +32,6 @@ class TbkActivitylinkGetRequest
 	private $relationId;
 
 	/**
-	 * 需要转链的活动页URL，从官方活动页获取
-	 **/
-	private $srcUrl;
-
-	/**
 	 * 媒体平台下达人的淘客pid
 	 **/
 	private $subPid;
@@ -42,6 +42,17 @@ class TbkActivitylinkGetRequest
 	private $unionId;
 
 	private $apiParas = array();
+
+	public function setActivityId($activityId)
+	{
+		$this->activityId = $activityId;
+		$this->apiParas["activity_id"] = $activityId;
+	}
+
+	public function getActivityId()
+	{
+		return $this->activityId;
+	}
 
 	public function setAdzoneId($adzoneId)
 	{
@@ -74,17 +85,6 @@ class TbkActivitylinkGetRequest
 	public function getRelationId()
 	{
 		return $this->relationId;
-	}
-
-	public function setSrcUrl($srcUrl)
-	{
-		$this->srcUrl = $srcUrl;
-		$this->apiParas["src_url"] = $srcUrl;
-	}
-
-	public function getSrcUrl()
-	{
-		return $this->srcUrl;
 	}
 
 	public function setSubPid($subPid)
@@ -122,8 +122,8 @@ class TbkActivitylinkGetRequest
 	public function check()
 	{
 
+		RequestCheckUtil::checkNotNull($this->activityId,"activityId");
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
-		RequestCheckUtil::checkNotNull($this->srcUrl,"srcUrl");
 	}
 
 	public function putOtherTextParam($key, $value) {
