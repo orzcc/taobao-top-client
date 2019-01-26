@@ -2,20 +2,20 @@
 namespace TopClient\domain;
 
 /**
- * 酒店图片
+ * result
  * @author auto create
  */
-class HotelImage
+class Result
 {
 
 	/**
-	 * 酒店id
+	 * results
 	 **/
-	public $hid;
+	public $results;
 
 	/**
-	 * 图片地址链接
+	 * totalResults
 	 **/
-	public $pic;
+	public $total_results;
 }
 ?>

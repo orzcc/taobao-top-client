@@ -2,21 +2,16 @@
 namespace TopClient\domain;
 
 /**
- * 淘宝联盟选品和招商宝贝信息
+ * TbkCoupon
  * @author auto create
  */
-class UatmTbkItem
+class TbkCoupon
 {
 
 	/**
 	 * 后台一级类目
 	 **/
 	public $category;
-
-	/**
-	 * 淘客地址
-	 **/
-	public $click_url;
 
 	/**
 	 * 佣金比率(%)
@@ -54,17 +49,12 @@ class UatmTbkItem
 	public $coupon_total_count;
 
 	/**
-	 * 招行活动的结束时间；如果该宝贝取自普通的选品组，则取值为1970-01-01 00:00:00
+	 * 宝贝描述（推荐理由）
 	 **/
-	public $event_end_time;
+	public $item_description;
 
 	/**
-	 * 招商活动开始时间；如果该宝贝取自普通选品组，则取值为1970-01-01 00:00:00；
-	 **/
-	public $event_start_time;
-
-	/**
-	 * 商品地址
+	 * 商品详情页链接地址
 	 **/
 	public $item_url;
 
@@ -74,7 +64,7 @@ class UatmTbkItem
 	public $nick;
 
 	/**
-	 * 商品ID
+	 * itemId
 	 **/
 	public $num_iid;
 
@@ -84,22 +74,12 @@ class UatmTbkItem
 	public $pict_url;
 
 	/**
-	 * 宝贝所在地
-	 **/
-	public $provcity;
-
-	/**
-	 * 商品一口价格
-	 **/
-	public $reserve_price;
-
-	/**
 	 * 卖家id
 	 **/
 	public $seller_id;
 
 	/**
-	 *
+	 * 店铺名称
 	 **/
 	public $shop_title;
 
@@ -109,24 +89,9 @@ class UatmTbkItem
 	public $small_images;
 
 	/**
-	 * 宝贝状态，0失效，1有效；注：失效可能是宝贝已经下线或者是被处罚不能在进行推广
-	 **/
-	public $status;
-
-	/**
 	 * 商品标题
 	 **/
 	public $title;
-
-	/**
-	 * 收入比例，举例，取值为20.00，表示比例20.00%
-	 **/
-	public $tk_rate;
-
-	/**
-	 * 宝贝类型：1 普通商品； 2 鹊桥高佣金商品；3 定向招商商品；4 营销计划商品;
-	 **/
-	public $type;
 
 	/**
 	 * 卖家类型，0表示集市，1表示商城
@@ -139,13 +104,8 @@ class UatmTbkItem
 	public $volume;
 
 	/**
-	 * 商品折扣价格
+	 * 折扣价
 	 **/
 	public $zk_final_price;
-
-	/**
-	 * 无线折扣价，即宝贝在无线上的实际售卖价格。
-	 **/
-	public $zk_final_price_wap;
 }
 ?>

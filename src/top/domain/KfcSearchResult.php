@@ -1,5 +1,4 @@
 <?php
-
 namespace TopClient\domain;
 
 /**
@@ -10,9 +9,7 @@ class KfcSearchResult
 {
 
 	/**
-	 * 过滤后的文本：
-	 * 当匹配到B等级的词时，文本中的关键词被替换为*号，content即为关键词替换后的文本；
-	 * 其他情况，content始终为null
+	 * 过滤后的文本：当匹配到B等级的词时，文本中的关键词被替换为*号，content即为关键词替换后的文本；其他情况，content始终为null
 	 **/
 	public $content;
 

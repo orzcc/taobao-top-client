@@ -2,20 +2,20 @@
 namespace TopClient\domain;
 
 /**
- * 酒店图片
+ * 类目属性
  * @author auto create
  */
-class HotelImage
+class Feature
 {
 
 	/**
-	 * 酒店id
+	 * 属性键
 	 **/
-	public $hid;
+	public $attr_key;
 
 	/**
-	 * 图片地址链接
+	 * 属性值
 	 **/
-	public $pic;
+	public $attr_value;
 }
 ?>
