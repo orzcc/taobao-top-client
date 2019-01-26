@@ -12,11 +12,6 @@ use TopClient\RequestCheckUtil;
 class TbkActivitylinkGetRequest
 {
 	/**
-	 * 官方活动ID，从官方活动页获取
-	 **/
-	private $activityId;
-
-	/**
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第三段
 	 **/
 	private $adzoneId;
@@ -25,6 +20,11 @@ class TbkActivitylinkGetRequest
 	 * 1：PC，2：无线，默认：１
 	 **/
 	private $platform;
+
+	/**
+	 * 官方活动ID，从官方活动页获取
+	 **/
+	private $promotionSceneId;
 
 	/**
 	 * 渠道关系ID，仅适用于渠道推广场景
@@ -42,17 +42,6 @@ class TbkActivitylinkGetRequest
 	private $unionId;
 
 	private $apiParas = array();
-
-	public function setActivityId($activityId)
-	{
-		$this->activityId = $activityId;
-		$this->apiParas["activity_id"] = $activityId;
-	}
-
-	public function getActivityId()
-	{
-		return $this->activityId;
-	}
 
 	public function setAdzoneId($adzoneId)
 	{
@@ -74,6 +63,17 @@ class TbkActivitylinkGetRequest
 	public function getPlatform()
 	{
 		return $this->platform;
+	}
+
+	public function setPromotionSceneId($promotionSceneId)
+	{
+		$this->promotionSceneId = $promotionSceneId;
+		$this->apiParas["promotion_scene_id"] = $promotionSceneId;
+	}
+
+	public function getPromotionSceneId()
+	{
+		return $this->promotionSceneId;
 	}
 
 	public function setRelationId($relationId)
@@ -122,8 +122,8 @@ class TbkActivitylinkGetRequest
 	public function check()
 	{
 
-		RequestCheckUtil::checkNotNull($this->activityId,"activityId");
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
+		RequestCheckUtil::checkNotNull($this->promotionSceneId,"promotionSceneId");
 	}
 
 	public function putOtherTextParam($key, $value) {

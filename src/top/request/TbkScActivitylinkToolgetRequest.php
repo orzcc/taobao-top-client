@@ -4,16 +4,11 @@ namespace TopClient\request;
  * TOP API: taobao.tbk.sc.activitylink.toolget request
  *
  * @author auto create
- * @since 1.0, 2019.01.14
+ * @since 1.0, 2019.01.25
  */
 use TopClient\RequestCheckUtil;
 class TbkScActivitylinkToolgetRequest
 {
-	/**
-	 * 官方活动ID，从官方活动页获取
-	 **/
-	private $activityId;
-
 	/**
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第三段
 	 **/
@@ -23,6 +18,11 @@ class TbkScActivitylinkToolgetRequest
 	 * 1：PC，2：无线，默认：１
 	 **/
 	private $platform;
+
+	/**
+	 * 官方活动ID，从官方活动页获取
+	 **/
+	private $promotionSceneId;
 
 	/**
 	 * 渠道关系ID，仅适用于渠道推广场景
@@ -40,17 +40,6 @@ class TbkScActivitylinkToolgetRequest
 	private $unionId;
 
 	private $apiParas = array();
-
-	public function setActivityId($activityId)
-	{
-		$this->activityId = $activityId;
-		$this->apiParas["activity_id"] = $activityId;
-	}
-
-	public function getActivityId()
-	{
-		return $this->activityId;
-	}
 
 	public function setAdzoneId($adzoneId)
 	{
@@ -72,6 +61,17 @@ class TbkScActivitylinkToolgetRequest
 	public function getPlatform()
 	{
 		return $this->platform;
+	}
+
+	public function setPromotionSceneId($promotionSceneId)
+	{
+		$this->promotionSceneId = $promotionSceneId;
+		$this->apiParas["promotion_scene_id"] = $promotionSceneId;
+	}
+
+	public function getPromotionSceneId()
+	{
+		return $this->promotionSceneId;
 	}
 
 	public function setRelationId($relationId)
@@ -120,8 +120,8 @@ class TbkScActivitylinkToolgetRequest
 	public function check()
 	{
 
-		RequestCheckUtil::checkNotNull($this->activityId,"activityId");
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
+		RequestCheckUtil::checkNotNull($this->promotionSceneId,"promotionSceneId");
 		RequestCheckUtil::checkNotNull($this->siteId,"siteId");
 	}
 
