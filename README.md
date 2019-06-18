@@ -1,4 +1,4 @@
-# 淘宝API for laravel/lumen (5.1|5.2)
+# 淘宝客API for laravel/lumen
 
 当前淘宝客 API 升级为2.0，原「淘宝客初级包」合并到了「淘宝客基础API」。
 
