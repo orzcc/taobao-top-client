@@ -1,4 +1,7 @@
 <?php
+
+namespace TopClient\request;
+
 /**
  * TOP API: taobao.ju.items.search request
  * 
