@@ -32,7 +32,7 @@ class TopClientFactory
             || !array_key_exists('app_secret', $config)) {
             throw new \InvalidArgumentException('The top client requires api keys.');
         }
-        return array_only($config, ['app_key', 'app_secret', 'format']);
+        return \Arr::only($config, ['app_key', 'app_secret', 'format']);
     }
 
     /**
