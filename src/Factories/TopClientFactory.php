@@ -1,6 +1,7 @@
 <?php
 namespace Orzcc\TopClient\Factories;
 
+use Illuminate\Support\Arr;
 use TopClient\TopClient;
 
 class TopClientFactory
@@ -32,7 +33,7 @@ class TopClientFactory
             || !array_key_exists('app_secret', $config)) {
             throw new \InvalidArgumentException('The top client requires api keys.');
         }
-        return \Arr::only($config, ['app_key', 'app_secret', 'format']);
+        return Arr::only($config, ['app_key', 'app_secret', 'format']);
     }
 
     /**
