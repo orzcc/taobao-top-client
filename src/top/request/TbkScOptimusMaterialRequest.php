@@ -1,12 +1,12 @@
 <?php
 namespace TopClient\request;
+use TopClient\RequestCheckUtil;
 /**
  * TOP API: taobao.tbk.sc.optimus.material request
  * 
  * @author auto create
- * @since 1.0, 2018.09.13
+ * @since 1.0, 2019.09.11
  */
-use TopClient\RequestCheckUtil;
 class TbkScOptimusMaterialRequest
 {
 	/** 
@@ -15,29 +15,34 @@ class TbkScOptimusMaterialRequest
 	private $adzoneId;
 	
 	/** 
-	 * 内容详情ID
+	 * 内容专用-内容详情ID
 	 **/
 	private $contentId;
 	
 	/** 
-	 * 内容渠道信息
+	 * 内容专用-内容渠道信息
 	 **/
 	private $contentSource;
 	
 	/** 
-	 * 设备号加密类型：MD5
+	 * 智能匹配-设备号加密类型：MD5
 	 **/
 	private $deviceEncrypt;
 	
 	/** 
-	 * 设备号加密后的值
+	 * 智能匹配-设备号类型：IMEI，或者IDFA，或者UTDID（UTDID不支持MD5加密），或者OAID
 	 **/
 	private $deviceType;
 	
 	/** 
-	 * 设备号类型：IMEI，或者IDFA，或者UTDID
+	 * 智能匹配-设备号加密后的值（MD5加密需32位小写）
 	 **/
 	private $deviceValue;
+	
+	/** 
+	 * 商品ID，用于相似商品推荐
+	 **/
+	private $itemId;
 	
 	/** 
 	 * 官方的物料Id(详细物料id见：https://tbk.bbs.taobao.com/detail.html?appId=45301&postId=8576096)
@@ -125,6 +130,17 @@ class TbkScOptimusMaterialRequest
 	public function getDeviceValue()
 	{
 		return $this->deviceValue;
+	}
+
+	public function setItemId($itemId)
+	{
+		$this->itemId = $itemId;
+		$this->apiParas["item_id"] = $itemId;
+	}
+
+	public function getItemId()
+	{
+		return $this->itemId;
 	}
 
 	public function setMaterialId($materialId)
