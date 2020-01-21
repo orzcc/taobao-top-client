@@ -59,4 +59,4 @@ dd($resp);
 
 ## Sponsor
 
-[Tech Life Land](https://www.techlifeland.com)
+[Find This Best](https://www.findthisbest.com)
