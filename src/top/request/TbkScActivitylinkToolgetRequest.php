@@ -2,45 +2,45 @@
 namespace TopClient\request;
 /**
  * TOP API: taobao.tbk.sc.activitylink.toolget request
- *
+ * 
  * @author auto create
- * @since 1.0, 2019.01.25
+ * @since 1.0, 2019.07.03
  */
 use TopClient\RequestCheckUtil;
 class TbkScActivitylinkToolgetRequest
 {
-	/**
+	/** 
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第三段
 	 **/
 	private $adzoneId;
-
-	/**
+	
+	/** 
 	 * 1：PC，2：无线，默认：１
 	 **/
 	private $platform;
-
-	/**
+	
+	/** 
 	 * 官方活动ID，从官方活动页获取
 	 **/
 	private $promotionSceneId;
-
-	/**
+	
+	/** 
 	 * 渠道关系ID，仅适用于渠道推广场景
 	 **/
 	private $relationId;
-
-	/**
+	
+	/** 
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第二段
 	 **/
 	private $siteId;
-
-	/**
+	
+	/** 
 	 * 自定义输入串，英文和数字组成，长度不能大于12个字符，区分不同的推广渠道
 	 **/
 	private $unionId;
-
+	
 	private $apiParas = array();
-
+	
 	public function setAdzoneId($adzoneId)
 	{
 		$this->adzoneId = $adzoneId;
@@ -111,20 +111,20 @@ class TbkScActivitylinkToolgetRequest
 	{
 		return "taobao.tbk.sc.activitylink.toolget";
 	}
-
+	
 	public function getApiParas()
 	{
 		return $this->apiParas;
 	}
-
+	
 	public function check()
 	{
-
+		
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
 		RequestCheckUtil::checkNotNull($this->promotionSceneId,"promotionSceneId");
 		RequestCheckUtil::checkNotNull($this->siteId,"siteId");
 	}
-
+	
 	public function putOtherTextParam($key, $value) {
 		$this->apiParas[$key] = $value;
 		$this->$key = $value;

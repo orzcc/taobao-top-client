@@ -5,7 +5,7 @@ use TopClient\RequestCheckUtil;
  * TOP API: taobao.tbk.sc.material.optional request
  * 
  * @author auto create
- * @since 1.0, 2019.09.11
+ * @since 1.0, 2020.04.29
  */
 class TbkScMaterialOptionalRequest
 {
@@ -18,6 +18,11 @@ class TbkScMaterialOptionalRequest
 	 * 商品筛选-后台类目ID。用,分割，最大10个，该ID可以通过taobao.itemcats.get接口获取到
 	 **/
 	private $cat;
+	
+	/** 
+	 * 本地化业务入参-LBS信息-国标城市码，仅支持单个请求，请求饿了么卡券物料时，该字段必填。 （详细城市ID见：https://mo.m.taobao.com/page_2020010315120200508）
+	 **/
+	private $cityCode;
 	
 	/** 
 	 * 智能匹配-设备号加密类型：MD5
@@ -90,6 +95,11 @@ class TbkScMaterialOptionalRequest
 	private $itemloc;
 	
 	/** 
+	 * 本地化业务入参-LBS信息-纬度
+	 **/
+	private $latitude;
+	
+	/** 
 	 * 锁佣结束时间
 	 **/
 	private $lockRateEndTime;
@@ -100,7 +110,12 @@ class TbkScMaterialOptionalRequest
 	private $lockRateStartTime;
 	
 	/** 
-	 * 物料id(详细物料id见：https://tbk.bbs.taobao.com/detail.html?appId=45301&postId=8576096)。不传时默认为2836
+	 * 本地化业务入参-LBS信息-经度
+	 **/
+	private $longitude;
+	
+	/** 
+	 * 不传时默认物料id=2836；如果直接对消费者投放，可使用官方个性化算法优化的搜索物料id=17004
 	 **/
 	private $materialId;
 	
@@ -138,6 +153,11 @@ class TbkScMaterialOptionalRequest
 	 * 查询的关键词
 	 **/
 	private $q;
+	
+	/** 
+	 * 商家id，仅支持饿了么卡券商家ID，支持批量请求1-100以内，多个商家ID使用英文逗号分隔
+	 **/
+	private $sellerIds;
 	
 	/** 
 	 * mm_xxx_22_xxx三段式的第二段数字
@@ -191,6 +211,17 @@ class TbkScMaterialOptionalRequest
 	public function getCat()
 	{
 		return $this->cat;
+	}
+
+	public function setCityCode($cityCode)
+	{
+		$this->cityCode = $cityCode;
+		$this->apiParas["city_code"] = $cityCode;
+	}
+
+	public function getCityCode()
+	{
+		return $this->cityCode;
 	}
 
 	public function setDeviceEncrypt($deviceEncrypt)
@@ -347,6 +378,17 @@ class TbkScMaterialOptionalRequest
 		return $this->itemloc;
 	}
 
+	public function setLatitude($latitude)
+	{
+		$this->latitude = $latitude;
+		$this->apiParas["latitude"] = $latitude;
+	}
+
+	public function getLatitude()
+	{
+		return $this->latitude;
+	}
+
 	public function setLockRateEndTime($lockRateEndTime)
 	{
 		$this->lockRateEndTime = $lockRateEndTime;
@@ -367,6 +409,17 @@ class TbkScMaterialOptionalRequest
 	public function getLockRateStartTime()
 	{
 		return $this->lockRateStartTime;
+	}
+
+	public function setLongitude($longitude)
+	{
+		$this->longitude = $longitude;
+		$this->apiParas["longitude"] = $longitude;
+	}
+
+	public function getLongitude()
+	{
+		return $this->longitude;
 	}
 
 	public function setMaterialId($materialId)
@@ -455,6 +508,17 @@ class TbkScMaterialOptionalRequest
 	public function getQ()
 	{
 		return $this->q;
+	}
+
+	public function setSellerIds($sellerIds)
+	{
+		$this->sellerIds = $sellerIds;
+		$this->apiParas["seller_ids"] = $sellerIds;
+	}
+
+	public function getSellerIds()
+	{
+		return $this->sellerIds;
 	}
 
 	public function setSiteId($siteId)

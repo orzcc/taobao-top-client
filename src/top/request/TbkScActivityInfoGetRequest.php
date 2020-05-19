@@ -4,14 +4,15 @@ namespace TopClient\request;
  * TOP API: taobao.tbk.sc.activity.info.get request
  * 
  * @author auto create
- * @since 1.0, 2020.02.20
+ * @since 1.0, 2020.04.26
  */
+
 use TopClient\RequestCheckUtil;
 
 class TbkScActivityInfoGetRequest
 {
 	/** 
-	 * 官方的物料id
+	 * 官方活动物料id
 	 **/
 	private $activityMaterialId;
 	
@@ -29,6 +30,11 @@ class TbkScActivityInfoGetRequest
 	 * mm_xxx_xxx_xxx的第二位
 	 **/
 	private $siteId;
+	
+	/** 
+	 * 自定义输入串，英文和数字组成，长度不能大于12个字符，区分不同的推广渠道
+	 **/
+	private $unionId;
 	
 	private $apiParas = array();
 	
@@ -74,6 +80,17 @@ class TbkScActivityInfoGetRequest
 	public function getSiteId()
 	{
 		return $this->siteId;
+	}
+
+	public function setUnionId($unionId)
+	{
+		$this->unionId = $unionId;
+		$this->apiParas["union_id"] = $unionId;
+	}
+
+	public function getUnionId()
+	{
+		return $this->unionId;
 	}
 
 	public function getApiMethodName()

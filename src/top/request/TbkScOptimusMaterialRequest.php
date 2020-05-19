@@ -5,7 +5,7 @@ use TopClient\RequestCheckUtil;
  * TOP API: taobao.tbk.sc.optimus.material request
  * 
  * @author auto create
- * @since 1.0, 2019.09.11
+ * @since 1.0, 2020.04.26
  */
 class TbkScOptimusMaterialRequest
 {
@@ -25,7 +25,7 @@ class TbkScOptimusMaterialRequest
 	private $contentSource;
 	
 	/** 
-	 * 智能匹配-设备号加密类型：MD5
+	 * 智能匹配-设备号加密类型：MD5，类型为OAID时不传
 	 **/
 	private $deviceEncrypt;
 	
@@ -35,7 +35,7 @@ class TbkScOptimusMaterialRequest
 	private $deviceType;
 	
 	/** 
-	 * 智能匹配-设备号加密后的值（MD5加密需32位小写）
+	 * 智能匹配-设备号加密后的值（MD5加密需32位小写），类型为OAID时传原始OAID值
 	 **/
 	private $deviceValue;
 	
@@ -45,7 +45,7 @@ class TbkScOptimusMaterialRequest
 	private $itemId;
 	
 	/** 
-	 * 官方的物料Id(详细物料id见：https://tbk.bbs.taobao.com/detail.html?appId=45301&postId=8576096)
+	 * 官方的物料Id(详细物料id见：https://market.m.taobao.com/app/qn/toutiao-new/index-pc.html#/detail/10628875?_k=gpov9a)
 	 **/
 	private $materialId;
 	
@@ -201,6 +201,7 @@ class TbkScOptimusMaterialRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
+		RequestCheckUtil::checkNotNull($this->materialId,"materialId");
 		RequestCheckUtil::checkMaxValue($this->pageSize,100,"pageSize");
 		RequestCheckUtil::checkMinValue($this->pageSize,1,"pageSize");
 		RequestCheckUtil::checkNotNull($this->siteId,"siteId");

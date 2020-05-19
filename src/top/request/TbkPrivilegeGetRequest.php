@@ -1,46 +1,46 @@
 <?php
 namespace TopClient\request;
+use TopClient\RequestCheckUtil;
 /**
  * TOP API: taobao.tbk.privilege.get request
- *
+ * 
  * @author auto create
- * @since 1.0, 2017.05.24
+ * @since 1.0, 2020.04.03
  */
-use TopClient\RequestCheckUtil;
 class TbkPrivilegeGetRequest
 {
-	/**
+	/** 
 	 * 推广位id，mm_xx_xx_xx pid三段式中的第三段
 	 **/
 	private $adzoneId;
-
-	/**
+	
+	/** 
 	 * 淘客商品id
 	 **/
 	private $itemId;
-
-	/**
+	
+	/** 
 	 * 营销计划链接中的me参数
 	 **/
 	private $me;
-
-	/**
+	
+	/** 
 	 * 1：PC，2：无线，默认：１
 	 **/
 	private $platform;
-
-	/**
+	
+	/** 
 	 * 渠道关系ID，仅适用于渠道推广场景
 	 **/
 	private $relationId;
-
-	/**
+	
+	/** 
 	 * 备案的网站id, mm_xx_xx_xx pid三段式中的第二段
 	 **/
 	private $siteId;
-
+	
 	private $apiParas = array();
-
+	
 	public function setAdzoneId($adzoneId)
 	{
 		$this->adzoneId = $adzoneId;
@@ -111,20 +111,19 @@ class TbkPrivilegeGetRequest
 	{
 		return "taobao.tbk.privilege.get";
 	}
-
+	
 	public function getApiParas()
 	{
 		return $this->apiParas;
 	}
-
+	
 	public function check()
 	{
-
+		
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
-		RequestCheckUtil::checkNotNull($this->itemId,"itemId");
 		RequestCheckUtil::checkNotNull($this->siteId,"siteId");
 	}
-
+	
 	public function putOtherTextParam($key, $value) {
 		$this->apiParas[$key] = $value;
 		$this->$key = $value;
